@@ -10,5 +10,5 @@ isoCode = "en"
 rtl = false
 dateFormat = "2 January 2006"
 description = ""
-author = { name = "André Mathlener" }
+ author = { name = "by André Mathlener" }
 logo = "andre-cartoon-sticker.png"

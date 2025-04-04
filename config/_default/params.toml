@@ -22,7 +22,7 @@ showScrollToTop = true
 
 [homepage]
 layout = "profile"
-showRecent = false
+showRecent = true
 showRecentItems = 5
 showMoreLink = false
 showMoreLinkDest = "/posts/"
@@ -36,7 +36,7 @@ showViews = false
 showLikes = false
 showDateOnlyInArticle = false
 showDateUpdated = false
-showAuthor = true
+showAuthor = false
 showHero = false
 layoutBackgroundBlur = true
 layoutBackgroundHeaderSpace = true
