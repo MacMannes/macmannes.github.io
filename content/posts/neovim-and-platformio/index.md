@@ -109,7 +109,3 @@ AlignConsecutiveAssignments: true
 AlignConsecutiveMacros: true
 ---
 ```
-
-```
-
-```
