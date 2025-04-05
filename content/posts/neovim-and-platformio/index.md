@@ -17,13 +17,11 @@ right. I just had to add a `extra_script.py` file to the project. This file is u
 extra configuration to the project. This file has to be referenced in `platformio.ini`, by adding
 the following line to the file:
 
-````ini
-
 #### platformio.ini
 
 ```ini
 extra_scripts = pre:extra_script.py
-````
+```
 
 #### extra_script.py
 
@@ -64,7 +62,7 @@ Diagnostics:
 Now, most of the errors are gone, but there are still some errors that I couldn't solve. It turned
 out that there was an [issue](https://github.com/platformio/platformio-core/issues/5090) in the
 latest version of platformio. Clangd wasn't able to find any Arduino framework lib like: WiFi,
-EEPROM, WiFiProv, etc, which caused errors like `Use of undeclared identifier 'WiFi`. I had to
+EEPROM, WiFiProv, etc, which caused errors like `Use of undeclared identifier 'WiFi'`. I had to
 downgrade to version 6.1.16, which is the last version that didn't have this issue. I did that by
 running the following command:
 
