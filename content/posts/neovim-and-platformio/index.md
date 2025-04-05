@@ -1,15 +1,15 @@
 ---
 date: "2025-04-04T20:58:04+02:00"
 draft: false
-title: "Neovim and Platformio"
+title: "Neovim and PlatformIO"
 tags: ["neovim", "platformio"]
 ---
 
 Recently I've been a bit obsessed with Neovim and I was wondering if I could use it for my
-Platformio projects. Of course, I could edit the source code with Neovim and the default Treesitter
+PlatformIO projects. Of course, I could edit the source code with Neovim and the default Treesitter
 plugin would provide syntax highlighting, but I wanted to go a bit further. Neovim has support for
 LSP (Language Server Protocol) and with that, I could get autocompletion, linting, and other
-features that would make my life easimr.
+features that would make my life easier.
 
 One of the LSP servers that I found is [clangd](https://clangd.llvm.org/config#compileflags), which
 is a C/C++ language server. I had some trouble getting it to work, but I finally managed to get it
@@ -61,7 +61,7 @@ Diagnostics:
 
 Now, most of the errors are gone, but there are still some errors that I couldn't solve. It turned
 out that there was an [issue](https://github.com/platformio/platformio-core/issues/5090) in the
-latest version of platformio. Clangd wasn't able to find any Arduino framework lib like: WiFi,
+latest version of PlatformIO. Clangd wasn't able to find any Arduino framework lib like: WiFi,
 EEPROM, WiFi, etc, which caused errors like `Use of undeclared identifier 'WiFi'`. I had to
 downgrade to version 6.1.16, which is the last version that didn't have this issue. I did that by
 running the following command:
