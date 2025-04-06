@@ -2,7 +2,10 @@
 date: "2025-04-04T20:58:04+02:00"
 draft: false
 title: "Neovim and PlatformIO"
-tags: ["neovim", "platformio"]
+tags:
+  - Neovim
+  - PlatformIO
+  - Arduino
 ---
 
 Recently I've been a bit obsessed with Neovim and I was wondering if I could use it for my
