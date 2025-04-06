@@ -47,32 +47,34 @@ switch (commandValue) {
         if (newPinIndex != -1) {
             String newPin = command.substring(newPinIndex + 1);
             pinCode = newPin;
-                    Serial.print("PIN code changed to: ");
-                    Serial.println(pinCode);
+            Serial.print("PIN code changed to: ");
+            Serial.println(pinCode);
 
-                    // Save the new PIN code to flash memory
-                    savePinCodeToFlash(pinCode);
-                } else {
-                    Serial.println("Invalid command format");
-                }
-
-                playSuccessNotes();
-                playSuccessNotes();
-
-                break;
-            }
-            case 1990: {
-                Serial.println("Playing Monkey Island Theme :-D");
-                playMonkeyIslandTune(BUZZER_PIN);
-                break;
-            }
-            default:
-                Serial.println("Invalid command");
-                playErrorNotes();
+            // Save the new PIN code to flash memory
+            savePinCodeToFlash(pinCode);
+        } else {
+            Serial.println("Invalid command format");
         }
+
+        playSuccessNotes();
+        playSuccessNotes();
+
+        break;
+    }
+    case 1990: {
+        Serial.println("Playing Monkey Island Theme :-D");
+        playMonkeyIslandTune(BUZZER_PIN);
+        break;
+    }
+    default:
+        Serial.println("Invalid command");
+        playErrorNotes();
+}
 ```
 
 ### After
+
+#### Lookup Table
 
 ```cpp
 // Lookup table for command handlers
@@ -84,7 +86,11 @@ const std::map<int, std::function<void()>> commandHandlers = {
     { SCHEDULE, []() { changeAlarmState(SCHEDULE, "Putting the alarm on scheduled mode"); } },
     { 1990,     playMonkeyIslandTheme                                                       }
 };
+```
 
+#### Command Execution
+
+```cpp
 void executeCommand(int commandValue, const String &command) {
     if (commandValue == 99) {
         handlePinChange(command);
@@ -98,7 +104,11 @@ void executeCommand(int commandValue, const String &command) {
     }
     it->second();  // Call the function mapped to the command
 }
+```
 
+#### Command Handlers
+
+```cpp
 void changeAlarmState(int newState, const char *message) {
     Serial.println(message);
     state = newState;
