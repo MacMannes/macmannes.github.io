@@ -122,11 +122,12 @@ void executeCommand(int commandValue, const String &command) {
         invalidCommand();
         return;
     }
+
     it->second();  // Call the function mapped to the command
 }
 ```
 
-The other functions are also cleaned up. And looks like this:
+The other functions are also cleaned up and look like this:
 
 ```cpp
 void changeAlarmState(int newState, const char *message) {
