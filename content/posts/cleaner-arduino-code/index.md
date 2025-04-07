@@ -1,6 +1,6 @@
 ---
-date: "2025-04-06T17:14:18+02:00"
-draft: true
+date: "2025-04-07T16:00:18+02:00"
+draft: false
 title: "Cleaner Arduino Code With Object Calisthenics"
 showHero: true
 tags:
@@ -9,7 +9,26 @@ tags:
   - Clean Code
 ---
 
-### Before
+The lost couple of months I've been learning how to make cleaner code in a Coding Dojo. At the dojo,
+we practiced
+[Object Calisthenics](https://bolcom.github.io/student-dojo/legacy-code/DevelopersAnonymous-ObjectCalisthenics.pdf),
+a set of programming rules designed to help developers make their code cleaner and more
+maintainable. The rules are:
+
+1. Only One Level of Indentation per Method
+2. Don’t Use the `else` Keyword
+3. Wrap All Primitives and Strings
+4. Use Only One Dot per Line
+5. Don’t Abbreviate
+6. Keep All Entities Small
+7. Don’t Use Any Classes with More Than Two Instance Variables
+8. Use First-Class Collections
+9. Don’t Use Getters and Setters
+
+When I was looking at an Arduino project for an alarm keypad, which I haven't touched in about a
+year, I thought it would be great opportunity to practice those rules on my code.
+
+## Before refactoring
 
 ```cpp
 switch (commandValue) {
@@ -72,9 +91,10 @@ switch (commandValue) {
 }
 ```
 
-### After
+## After refactoring
 
-#### Lookup Table
+A `switch` statement is in fact nothing more than an `if` statement with a lot of `else`s which can
+be replaced with a lookup table. By doing this, I could also clean up some duplicated code.
 
 ```cpp
 // Lookup table for command handlers
@@ -88,7 +108,7 @@ const std::map<int, std::function<void()>> commandHandlers = {
 };
 ```
 
-#### Command Execution
+I introduced the `executeCommand` function to lookup the command and execute it.
 
 ```cpp
 void executeCommand(int commandValue, const String &command) {
@@ -106,7 +126,7 @@ void executeCommand(int commandValue, const String &command) {
 }
 ```
 
-#### Command Handlers
+The other functions are also cleaned up. And looks like this:
 
 ```cpp
 void changeAlarmState(int newState, const char *message) {
@@ -126,3 +146,13 @@ void invalidCommand() {
     playErrorNotes();
 }
 ```
+
+There's room for improvement, as the `main.c` file remains quite large. In the future, I plan to
+refactor the code by introducing an object-oriented approach to encapsulate the code into smaller,
+more manageable pieces. For now, however, I am satisfied with the results.
+
+In case you're curious about the playMonkeyIslandTheme function on the alarm keypad—it's simply an
+Easter Egg that plays the theme from Monkey Island through a simple buzzer. Being my favorite
+adventure game, adding its iconic music provides a fun and nostalgic touch to the project.
+
+{{< youtubeLite id="6ORsT4Gs9hA" label="Monkey Island PC Speaker Theme on an Arduino" >}}
