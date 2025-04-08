@@ -152,8 +152,8 @@ There's room for improvement, as the `main.c` file remains quite large. In the f
 refactor the code by introducing an object-oriented approach to encapsulate the code into smaller,
 more manageable pieces. For now, however, I am satisfied with the results.
 
-In case you're curious about the playMonkeyIslandTheme function on the alarm keypad—it's simply an
-Easter Egg that plays the theme from Monkey Island through a simple buzzer. Being my favorite
+In case you're curious about the `playMonkeyIslandTheme` function on the alarm keypad — it's simply
+an Easter Egg that plays the theme from Monkey Island through a simple buzzer. Being my favorite
 adventure game, adding its iconic music provides a fun and nostalgic touch to the project.
 
 {{< youtubeLite id="6ORsT4Gs9hA" label="Monkey Island PC Speaker Theme on an Arduino" >}}
